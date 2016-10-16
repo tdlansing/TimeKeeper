@@ -10,6 +10,18 @@ package Person;
  * @author Tim Lansing
  */
 public class Person {
+    
+    /**
+     * Constructor
+     */
+    public Person(){
+        personID = 0;
+        firstName = "";
+        lastName = "";
+        password = "password";
+        securityRole = "user";
+    }
+    
     /**
      * Id of the person.
      */

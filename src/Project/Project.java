@@ -9,7 +9,17 @@ package Project;
  *
  * @author Tim Lansing
  */
-public class Project {
+public class Project implements Comparable {
+    
+    /**
+     * Project constructor.
+     */
+    public Project(){
+        projectID = 0;
+        activeFlag = true;
+        name = "";
+        description = "";
+    }
     
     /**
      * ID of the project.
@@ -87,4 +97,19 @@ public class Project {
         this.description = description;
     }
     
+    @Override
+    public String toString(){
+        if(this.isActiveFlag()){
+            return "Project: " + this.getProjectID() + " " + this.getName() + ", Active";
+        }
+        else{
+            return "Project: " + this.getProjectID() + " " + this.getName() + ", Not Active";
+        }
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        Project p = (Project)o;
+        return this.getName().compareTo(p.getName());
+    }
 }

@@ -14,6 +14,16 @@ import java.time.LocalDateTime;
 public class TimeRecord {
     
     /**
+     * Constructor for TimeRecord.
+     */
+    public TimeRecord(){
+        projectID = 0;
+        personID = 0;
+        startOrStop = 'S';
+        dateAndTime = null;
+    }
+    
+    /**
      * The ID of the project.
      */
     private int projectID;
