@@ -3,6 +3,7 @@
  */
 package TimeKeeper;
 
+import Gui.GuiObserver;
 import Person.Person;
 import Person.PersonDAO;
 import Project.Project;
@@ -41,6 +42,9 @@ public class TimeKeeper {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        GuiObserver observer = new GuiObserver();
+        
         // If there not not exactly 3 arguments then display an error message.
         if(args.length != 3){
             displayStartupErrorMessage("Sorry, but this program requires three arguments.", args);
