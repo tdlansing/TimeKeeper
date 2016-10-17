@@ -11,6 +11,8 @@ import Project.ProjectDAO;
 import TimeRecord.TimeRecord;
 import TimeRecord.TimeRecordDAO;
 import java.time.LocalDateTime;
+import java.util.Locale;
+import java.util.ResourceBundle;
 
 /**
  * This program was created to help keep track of the amount of time a person works on a given

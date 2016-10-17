@@ -12,8 +12,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.Locale;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.ResourceBundle;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
@@ -27,21 +29,24 @@ import javax.swing.JTextField;
  * @author Tim Lansing
  */
 public class GuiObserver extends JFrame  implements Observer, ActionListener{
+
+    String bundleName = "Gui.TimeKeeper";
+    ResourceBundle userOutput = ResourceBundle.getBundle(bundleName, Locale.ENGLISH);
   
-    private static final String TITLE_TEXT = "TimeKeeper";
+    //private static final String TITLE_TEXT = "TimeKeeper";
     private final String USER_NAME_LABEL = "User Name";
     private final int FIELD_LENGTH = 20;
     private JTextField userNameField;
     
     public GuiObserver(){
-        super(TITLE_TEXT);
+        super("Initial Title");
         initialize();        
     }
     
     //Doesn't have to be called initialize.  Could be named anything.
     private void initialize(){
         // http://www.java2s.com/Code/Java/Swing-JFC/Createamainmenu.htm
-        JFrame panel = new JFrame(TITLE_TEXT);
+        JFrame panel = new JFrame(userOutput.getString("title_text"));
         panel.setSize(600, 500);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         panel.setLocation(dim.width/2-panel.getSize().width/2, dim.height/2-panel.getSize().height/2);
@@ -94,27 +99,7 @@ public class GuiObserver extends JFrame  implements Observer, ActionListener{
     }
         
         
-        
-/**
-        // Create header for the window.
-        String headerText = "Username: Name, Project: Name's Project";
-        JPanel headerPanel = new JPanel();
-        JLabel headerLabel = new JLabel(headerText);
-        headerPanel.add(headerLabel);
-        
-        JPanel namePanel = new JPanel();
-        
-        JLabel userNameLabel = new JLabel(USER_NAME_LABEL);
-        userNameField = new JTextField(FIELD_LENGTH);
 
-        namePanel.add(userNameLabel);
-        namePanel.add(userNameField);
-        mainPanel.add(headerPanel);
-        mainPanel.add(namePanel);
-        
-        add(mainPanel);
-        
-    }
 
     /**
      * Abstract method from observer
