@@ -3,6 +3,7 @@
  */
 package TimeKeeper;
 
+import Gui.GUIMaster;
 import Gui.GuiObserver;
 import Person.Person;
 import Person.PersonDAO;
@@ -45,7 +46,8 @@ public class TimeKeeper {
      */
     public static void main(String[] args) {
         
-        GuiObserver observer = new GuiObserver();
+//        GuiObserver observer = new GuiObserver();
+        GUIMaster TKGUI = new GUIMaster();// GUIMaster
         
         // If there not not exactly 3 arguments then display an error message.
         if(args.length != 3){

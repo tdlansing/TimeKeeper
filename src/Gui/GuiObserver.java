@@ -64,17 +64,17 @@ public class GuiObserver extends JFrame  implements Observer, ActionListener{
         
         // Crating a menu bar
         JMenuBar jmb = new JMenuBar();
-        JMenu jmFile = new JMenu("Menu");
-        JMenuItem jmiETR = new JMenuItem("Enter time record");
-        JMenuItem jmiLogOut = new JMenuItem("Log out");
-        JMenuItem jmiExit = new JMenuItem("Exit");
+        JMenu jmFile = new JMenu(userOutput.getString("display_menu"));
+        JMenuItem jmiETR = new JMenuItem(userOutput.getString("menu_time_record"));
+        JMenuItem jmiLogOut = new JMenuItem(userOutput.getString("menu_exit"));
+        JMenuItem jmiExit = new JMenuItem(userOutput.getString("exit_program_message"));
         jmFile.add(jmiETR);
         jmFile.addSeparator();
         jmFile.add(jmiLogOut);
         jmFile.add(jmiExit);
         jmb.add(jmFile);
-        JMenu jmHelp = new JMenu("Help");
-        JMenuItem jmiAbout = new JMenuItem("About");
+        JMenu jmHelp = new JMenu(userOutput.getString("help_menu_item"));
+        JMenuItem jmiAbout = new JMenuItem(userOutput.getString("about_menu_item"));
         jmHelp.add(jmiAbout);
         jmb.add(jmHelp);
 
@@ -85,12 +85,12 @@ public class GuiObserver extends JFrame  implements Observer, ActionListener{
         jmiAbout.addActionListener(this);
 
         // Create header for the window.
-        String headerText = "Username: Name, Project: Name's Project";
+        //String headerText = "Username: Name, Project: Name's Project";
         headerPanel = new JPanel();
         //headerPanel.setSize(10, 10);
         headerPanel.setSize(600,20);
         headerPanel.setLocation(0, 0);
-        JLabel headerLabel = new JLabel(headerText);
+        JLabel headerLabel = new JLabel(userOutput.getString("display_header"));
         headerPanel.add(headerLabel);
 
         // Create a bottom panel for displaying CardLayout panels
@@ -138,10 +138,12 @@ public class GuiObserver extends JFrame  implements Observer, ActionListener{
         System.out.println(comStr + " Selected");
         
         // If Exit is selected then close the window.
-        if(comStr.equals("Exit")){
+        if(comStr.equals(userOutput.getString("exit_program_message"))){
             System.exit(0);
-        } else if(comStr.equals("Enter time record")) {
+        } else if(comStr.equals(userOutput.getString("menu_time_record"))) {
             cl.show(bottomPanel, "2");
+        } else if(comStr.equals(userOutput.getString("menu_exit"))) {
+            cl.show(bottomPanel, "1");
         }
     }
         

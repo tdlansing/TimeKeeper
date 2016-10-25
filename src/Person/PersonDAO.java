@@ -91,7 +91,7 @@ public class PersonDAO {
         Person selectedPerson = null;
         for (int i = 0; i < people.size(); i++){
             String name = people.get(i).getFirstName() + " " + people.get(i).getLastName();
-            if (name == personName){
+            if (name.toLowerCase().equals(personName.toLowerCase())){   //Added to remove case sensitivity in evaluating names.
                 selectedPerson = people.get(i);
             }
         }
