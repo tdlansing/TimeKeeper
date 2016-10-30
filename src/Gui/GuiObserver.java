@@ -115,11 +115,6 @@ public class GuiObserver extends JFrame  implements Observer, ActionListener{
         bottomPanel.add(createTimeRecordPanel, "2");
         // Tell bottom panel to show the blank panel initially.
         cl.show(bottomPanel, "1");
-        
-        
-        
-        
-        
         // Setting the menu bar
         panel.setJMenuBar(jmb);
         // Adding bottom panel that will be changed out to the header panel.
@@ -129,9 +124,7 @@ public class GuiObserver extends JFrame  implements Observer, ActionListener{
         // Making the panel visible.
         panel.setVisible(true);
     }
-    
-
-    
+  
     @Override
     public void actionPerformed(ActionEvent ae) {
         String comStr = ae.getActionCommand();
@@ -147,9 +140,6 @@ public class GuiObserver extends JFrame  implements Observer, ActionListener{
         }
     }
         
-        
-
-
     /**
      * Abstract method from observer
      * From the API

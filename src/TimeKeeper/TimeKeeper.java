@@ -84,6 +84,9 @@ public class TimeKeeper {
         System.out.println("Project: " + thisProject.getName());
         System.out.println("S/E Code:" + newTimeRecord.getStartOrStop());
         System.out.println("Time:    " + newTimeRecord.getDateAndTime());
+        
+        
+        
     }
     
 }

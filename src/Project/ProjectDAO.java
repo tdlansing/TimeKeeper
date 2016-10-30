@@ -19,27 +19,27 @@ import java.util.logging.Logger;
  * @author Tim Lansing
  */
 public class ProjectDAO {
-    
+
     /**
      * ArrayList storing all of the Project objects from the file.
      */
     private ArrayList<Project> projects = new ArrayList<Project>();
-    
+
     /**
      * Separator for when storing data in a file.
      */
     private char separator = '|';
-    
+
     /**
      * Name of the file.
      */
     private final String filename = "project_data.txt";
-    
+
     /**
      * Reads data from file and stores it in the appropriate ArrayList.
      */
-    private void readFile(){
-        try{
+    private void readFile() {
+        try {
             BufferedReader reader = new BufferedReader(new FileReader(new File(filename)));
             String line;
             while ((line = reader.readLine()) != null) {
@@ -47,7 +47,7 @@ public class ProjectDAO {
                 Project thisProject = new Project();
                 thisProject.setProjectID(Integer.parseInt(fileObject[0]));
                 boolean activeStatus = false;
-                if(fileObject[1] == "A"){
+                if (fileObject[1] == "A") {
                     activeStatus = true;
                 }
                 thisProject.setActiveFlag(activeStatus);
@@ -56,7 +56,7 @@ public class ProjectDAO {
                 projects.add(thisProject);
             }
             reader.close();
-        }catch(FileNotFoundException ex){
+        } catch (FileNotFoundException ex) {
             System.err.println("File \"" + filename + "\" could not be found.");
             System.exit(-1);
         } catch (IOException ex) {
@@ -65,49 +65,58 @@ public class ProjectDAO {
             System.exit(-1);
         }
     }
-    
+
     /**
      * Returns the Project object for the projectID given.
+     *
      * @param projectID ID of the person being searched for.
      * @return Object for the projectID given.
      */
-    public Project getProject(int projectID){
+    public Project getProject(int projectID) {
         readFile();
         Project selectedProject = null;
-        for (int i = 0; i < projects.size(); i++){
-            if (projects.get(i).getProjectID() == projectID){
+        for (int i = 0; i < projects.size(); i++) {
+            if (projects.get(i).getProjectID() == projectID) {
                 selectedProject = projects.get(i);
             }
         }
         return selectedProject;
     }
-    
+
     /**
      * Returns the Project object for the name given.
+     *
      * @param projectName Name of the project being searched for.
      * @return Object for the projectID given.
      */
-    public Project getProject(String projectName){
+    public Project getProject(String projectName) {
         readFile();
         Project selectedProject = null;
-        for (int i = 0; i < projects.size(); i++){
+        for (int i = 0; i < projects.size(); i++) {
             String name = projects.get(i).getName();
-            if (name == projectName){
+            if (name == projectName) {
                 selectedProject = projects.get(i);
             }
         }
         return selectedProject;
     }
 
-    
+    public Project getActiveProject() {
+        readFile();
+        Project selectedProject = null;
+        for (int i = 0; i < projects.size(); i++) {
+            if (selectedProject.isActiveFlag() == true) {
+                selectedProject = projects.get(i);
+
+            }
+        }
+        return selectedProject;
+    }
+
+    public ArrayList<Project> getProjects() {
+        readFile();
+        return projects;
+
+    }
+
 }
-
-
-
-
-
-    
-
-
-    
-

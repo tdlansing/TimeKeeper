@@ -5,40 +5,59 @@
  */
 package Gui;
 
+import Project.Project;
+import Project.ProjectDAO;
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import javax.swing.table.AbstractTableModel;
+import java.util.Comparator;
 
 /**
  *
  * @author Eric Walton
  */
 public class TableModel extends AbstractTableModel {
-    
-    String[] columnNames = {"Project ID", "Active", "Project Name", "Project Description"};
-    Object[][] test1 = {{1, false, "A", "Sample Description"},
-                        {2, false, "A", "Sample Description"},
-                        {3, false, "A", "Sample Description"},
-                        {4, false, "A", "Sample Description"},
-                        {5, false, "A", "Sample Description"},
-                        {6, false, "A", "Sample Description"},
-                        {7, false, "A", "Sample Description"},
-                        {8, false, "A", "Sample Description"},
-                        {9, false, "A", "Sample Description"},
-                        {10, false, "A", "Sample Description"},
-                        {11, false, "A", "Sample Description"},
-                        {12, false, "A", "Sample Description"},
-                        {13, false, "A", "Sample Description"}
-                        };
+
+    private ArrayList<Project> projects = null;
+
+    private Project[] projectsArr = null;
+
+    Project proj = new Project();
+    ProjectDAO pDAO = new ProjectDAO();
+    Project[] projObs;
+
+    public TableModel() {
+        projects = pDAO.getProjects();
+        projectsArr = projects.toArray(new Project[projects.size()]);
+        Arrays.sort(projectsArr);
+    }
+
     /**
-     * 
-     * @return 
+     * I think this is really all that is needed for the column names
+     */
+    String[] columnNames = {"Project ID", "Project Name"};
+
+    /**
+     * original sample data stored in multidimensional array. - no longer using.
+     */
+    public void setProject() {
+        projects = pDAO.getProjects();
+    }
+
+    /**
+     *
+     * @return
      */
     @Override
     public int getRowCount() {
-        return test1.length;
+        return projectsArr.length;
     }
+
     /**
-     * 
-     * @return 
+     *
+     * @return
      */
     @Override
     public int getColumnCount() {
@@ -49,45 +68,41 @@ public class TableModel extends AbstractTableModel {
     public String getColumnName(int i) {
         return columnNames[i];
     }
+
     /**
-     * 
+     *
      * @param rowIndex
      * @param columnIndex
-     * @return 
+     * @return
      */
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        return test1[rowIndex][columnIndex];
+        Project thisProject = projectsArr[rowIndex];
+
+        Object[][] project = {{thisProject.getProjectID(), thisProject.getName()}};
+        return project[0][columnIndex];
+
     }
+
     /**
-     * 
+     *
      * @param c
-     * @return 
+     * @return
      */
     @Override
     public Class getColumnClass(int c) {
         return getValueAt(0, c).getClass();
     }
-    
+
     /**
-     * 
+     *
      * @param row
      * @param column
-     * @return 
+     * @return
      */
     @Override
-    public boolean isCellEditable(int row,int column){
-        return true;
+    public boolean isCellEditable(int row, int column) {
+        return false;
     }
-    /**
-     * 
-     * @param value
-     * @param row
-     * @param column 
-     */
-    @Override
-    public void setValueAt(Object value, int row, int column){
-        test1[row][column] = value;
-    }
-    
+
 }// end of class

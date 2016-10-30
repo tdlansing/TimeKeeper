@@ -16,7 +16,7 @@ public class Authentication {
     
     private static PersonDAO pdao = new PersonDAO();
     
-    public static boolean authenticateUser(int username, String password){
+    public static boolean authenticateUser(String username, String password){
         boolean isGoodUser = false;
         try{
             Person user = pdao.getPerson(username);
