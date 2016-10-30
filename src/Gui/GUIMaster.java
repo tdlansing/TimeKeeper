@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gui2;
+package Gui;
 
 import TimeKeeper.Authentication;
 import java.awt.Color;
