@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/bob/Desktop/FinalProjectJavaGUI/FinalProjectJavaGUI/FinalProjectJavaGIT/src/Gui/TimeKeeper.properties</file>
-            <file>file:/C:/Users/bob/Desktop/FinalProjectJavaGUI/FinalProjectJavaGUI/FinalProjectJavaGIT/src/Gui/GUIMaster.java</file>
-            <file>file:/C:/Users/bob/Desktop/FinalProjectJavaGUI/FinalProjectJavaGUI/FinalProjectJavaGIT/src/Person/PersonDAO.java</file>
-            <file>file:/C:/Users/bob/Desktop/FinalProjectJavaGUI/FinalProjectJavaGUI/FinalProjectJavaGIT/src/Gui/GuiObserver.java</file>
-            <file>file:/C:/Users/bob/Desktop/FinalProjectJavaGUI/FinalProjectJavaGUI/FinalProjectJavaGIT/src/TimeKeeper/Authentication.java</file>
+            <file>file:/C:/Users/bob/Desktop/TimeKeeperGIT/src/Gui/GuiObserver.java</file>
+            <file>file:/C:/Users/bob/Desktop/TimeKeeperGIT/src/Gui/TimeKeeper.properties</file>
+            <file>file:/C:/Users/bob/Desktop/TimeKeeperGIT/src/Gui/GUIMaster.java</file>
+            <file>file:/C:/Users/bob/Desktop/TimeKeeperGIT/src/TimeKeeper/Authentication.java</file>
         </group>
     </open-files>
 </project-private>
