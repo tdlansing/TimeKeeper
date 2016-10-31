@@ -49,44 +49,46 @@ public class TimeKeeper {
 //        GuiObserver observer = new GuiObserver();
         GUIMaster TKGUI = new GUIMaster();// GUIMaster
         
-        // If there not not exactly 3 arguments then display an error message.
-        if(args.length != 3){
-            displayStartupErrorMessage("Sorry, but this program requires three arguments.", args);
-        // Else, if the third argument isn't an S or an E then display an error message.
-        } else if (!args[2].equals("S") && !args[2].equals("E")) {
-            displayStartupErrorMessage("Sorry, but the third argument must be an \"S\" or an \"E\".", args);
-        }
-        // Continue running the program.
-        
-        // Get the Person object.
-        PersonDAO accessPeople = new PersonDAO();
-        Person thisPerson = accessPeople.getPerson(Integer.parseInt(args[0]));
-        if (thisPerson == null){
-            System.out.println("A person with the ID \"" + args[0] + "\" could not be found.");
-            System.exit(-1);
-        }
-        
-        // Get the Project object.
-        ProjectDAO accessProjects = new ProjectDAO();
-        Project thisProject = accessProjects.getProject(Integer.parseInt(args[1]));
-        if (thisProject == null){
-            System.out.println("A project with the ID \"" + args[1] + "\" could not be found.");
-            System.exit(-1);
-        }
-        
-        // Append line to Time Record file.
-        TimeRecordDAO newTimeRecordDAO = new TimeRecordDAO();
-        TimeRecord newTimeRecord = newTimeRecordDAO.appendTimeRecord(Integer.parseInt(args[1]), Integer.parseInt(args[0]), args[2].charAt(0));
-        
-        // Display name, project, and time.
-        System.out.println("Record has been entered for:");
-        System.out.println("Name:    " + thisPerson.getFirstName() + " " + thisPerson.getLastName());
-        System.out.println("Project: " + thisProject.getName());
-        System.out.println("S/E Code:" + newTimeRecord.getStartOrStop());
-        System.out.println("Time:    " + newTimeRecord.getDateAndTime());
-        
-        
-        
+// Leaving console line code commented out until GUI is finished.
+
+//        // If there not not exactly 3 arguments then display an error message.
+//        if(args.length != 3){
+//            displayStartupErrorMessage("Sorry, but this program requires three arguments.", args);
+//        // Else, if the third argument isn't an S or an E then display an error message.
+//        } else if (!args[2].equals("S") && !args[2].equals("E")) {
+//            displayStartupErrorMessage("Sorry, but the third argument must be an \"S\" or an \"E\".", args);
+//        }
+//        // Continue running the program.
+//        
+//        // Get the Person object.
+//        PersonDAO accessPeople = new PersonDAO();
+//        Person thisPerson = accessPeople.getPerson(Integer.parseInt(args[0]));
+//        if (thisPerson == null){
+//            System.out.println("A person with the ID \"" + args[0] + "\" could not be found.");
+//            System.exit(-1);
+//        }
+//        
+//        // Get the Project object.
+//        ProjectDAO accessProjects = new ProjectDAO();
+//        Project thisProject = accessProjects.getProject(Integer.parseInt(args[1]));
+//        if (thisProject == null){
+//            System.out.println("A project with the ID \"" + args[1] + "\" could not be found.");
+//            System.exit(-1);
+//        }
+//        
+//        // Append line to Time Record file.
+//        TimeRecordDAO newTimeRecordDAO = new TimeRecordDAO();
+//        TimeRecord newTimeRecord = newTimeRecordDAO.appendTimeRecord(Integer.parseInt(args[1]), Integer.parseInt(args[0]), args[2].charAt(0));
+//        
+//        // Display name, project, and time.
+//        System.out.println("Record has been entered for:");
+//        System.out.println("Name:    " + thisPerson.getFirstName() + " " + thisPerson.getLastName());
+//        System.out.println("Project: " + thisProject.getName());
+//        System.out.println("S/E Code:" + newTimeRecord.getStartOrStop());
+//        System.out.println("Time:    " + newTimeRecord.getDateAndTime());
+//        
+//        
+//        
     }
     
 }
