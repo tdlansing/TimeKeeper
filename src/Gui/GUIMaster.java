@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Gui3;
+package Gui;
 
 import TimeKeeper.Authentication;
 import java.awt.Color;
@@ -151,7 +151,7 @@ public class GUIMaster extends JFrame implements Observer, ActionListener, Compo
         signInPanel.setBackground(Color.lightGray);
         signInPanel.setLocation(0, 40);
         signInPanel.setSize(frame.getBounds().width, 60);
-        JButton enterButton = new JButton("enter");
+        JButton enterButton = new JButton(userOutput.getString("enter"));
         enterButton.addActionListener(this);
         usernameLabel = new JLabel(USERNAME_TEXT);
         usernameLabel.setFont(new Font("TimesNewRoman", Font.BOLD, 18));
@@ -296,10 +296,7 @@ public class GUIMaster extends JFrame implements Observer, ActionListener, Compo
     @Override
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
-        if ("Enter".equals(command)) {
-            preValidateSignIn();
-        }
-
+        
         // If Exit is selected then close the window.
         if (command.equals(userOutput.getString("exit_program_message"))) {
             System.exit(0);
@@ -314,16 +311,22 @@ public class GUIMaster extends JFrame implements Observer, ActionListener, Compo
             frame.setJMenuBar(null);
             setFooterText("first_name_or_exit");
         } else if (command.equals(userOutput.getString("enter"))) {// maybe change menu_exit to logout?
-            if (Authentication.authenticateUser(usernameField.getText(), passwordField.getText())) {
-                signInPanel.setVisible(false);// shows the signInPanel 
-                setFooterText("title_text");
-                frame.setJMenuBar(jmb);
-                usernameField.setText("");
-                passwordField.setText("");
-            } else {
-                usernameField.setText("");
-                passwordField.setText("");
-                setFooterText("invalid_password");
+            preValidateSignIn();
+            try{
+                int thisUsername = Integer.parseInt(usernameField.getText());
+                if(Authentication.authenticateUser(thisUsername, passwordField.getText())){
+                    signInPanel.setVisible(false);// shows the signInPanel 
+                    setFooterText("title_text");
+                    frame.setJMenuBar(jmb);
+                    usernameField.setText("");
+                    passwordField.setText("");
+                }else{
+                    usernameField.setText("");
+                    passwordField.setText("");
+                    setFooterText("invalid_password");
+                }
+            }catch(NumberFormatException nfe){
+                setFooterText("invalid_username");
             }
         }
 
