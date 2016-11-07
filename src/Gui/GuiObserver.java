@@ -83,6 +83,9 @@ public class GuiObserver extends JFrame  implements Observer, ActionListener{
         jmiLogOut.addActionListener(this);
         jmiExit.addActionListener(this);
         jmiAbout.addActionListener(this);
+        //GUIMaster.table.addMouseListener(new java.awt.event.MouseAdapter() {
+            
+        //}
 
         // Create header for the window.
         //String headerText = "Username: Name, Project: Name's Project";

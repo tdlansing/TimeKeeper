@@ -66,7 +66,7 @@ public class GUIMaster extends JFrame implements Observer, ActionListener, Compo
     private static JPanel signInPanel;
     private static JPanel enterTimeRecordPanel;
     private static JPanel footerPanel;
-    private static JTable table;
+    public static JTable table;
     private static Container container1;
 
     private static final String USERNAME_TEXT = "Username";

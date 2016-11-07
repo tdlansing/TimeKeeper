@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -47,7 +48,7 @@ public class ProjectDAO {
                 Project thisProject = new Project();
                 thisProject.setProjectID(Integer.parseInt(fileObject[0]));
                 boolean activeStatus = false;
-                if (fileObject[1] == "A") {
+                if (fileObject[1].equals("A")) {
                     activeStatus = true;
                 }
                 thisProject.setActiveFlag(activeStatus);
@@ -119,4 +120,54 @@ public class ProjectDAO {
 
     }
 
+//    public Project[] getActiveTableProjects() {
+//        // calls the readFile() so the ArrayList projects is populated 
+//        readFile();
+//        // instantiates an Array of Projects from the ArrayList converted 
+//        // into a 1 dimensional array called projArr
+//        Project[] fullProjArr = projects.toArray(new Project[projects.size()]);
+//        // sorts the array by natural order
+//        Arrays.sort(fullProjArr);
+//
+//        // Set variable to store number of active records.
+//        int numberOfActiveRecords = 0;
+//        
+//        // Get numer of records that are active.
+//        for (int row = 0; row < fullProjArr.length; row++){
+//            if(fullProjArr[row].isActiveFlag()){
+//                numberOfActiveRecords++;
+//            }
+//        }
+//        
+//        // Get records that are active.
+//        Project[] selectedRecords = new Project[numberOfActiveRecords];
+//        int locationOfRecordToAdd = 0;
+//        
+//        for (int row = 0; row < fullProjArr.length; row++){
+//            if(fullProjArr[row].isActiveFlag()){
+//                selectedRecords[locationOfRecordToAdd] = fullProjArr[row];
+//                locationOfRecordToAdd++;
+//            }
+//        }
+//        // Return parts of those records that are asked for.
+//        
+//        // creates a 2 dimensional array named project
+//        //Project[][] project = new Project[selectedRecords.length][10];
+//
+////        //for (int row = 0; row < project.length; row++) {
+////            for (int col = 0; col < project.length; col++) {
+////                // this needs to be changed to true when the set active flag is 
+////                // fixed.
+////                if(projects. isActiveFlag() == true){
+////                project[row][col] = projArr[row];
+////                }
+////            }
+////
+////        }
+//        return selectedRecords;
+//    }
+    
+
+    
+    
 }

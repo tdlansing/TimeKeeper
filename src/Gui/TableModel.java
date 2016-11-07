@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import javax.swing.table.AbstractTableModel;
 import java.util.Comparator;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,13 +25,26 @@ public class TableModel extends AbstractTableModel {
 
     private Project[] projectsArr = null;
 
-    Project proj = new Project();
+    private ArrayList<Project> activeProjObs = null;
+    Project proj = new Project(); // doesn't seem to be used
     ProjectDAO pDAO = new ProjectDAO();
-    Project[] projObs;
 
     public TableModel() {
         projects = pDAO.getProjects();
-        projectsArr = projects.toArray(new Project[projects.size()]);
+        
+        activeProjObs = new ArrayList<Project>();
+            
+        String output = "Added record for: ";
+        for (Project proj : projects) {
+            if (proj.isActiveFlag()){
+               activeProjObs.add(proj);
+               output += (proj.getName() + ", ");
+            }
+        }
+      //  JOptionPane.showMessageDialog(null, output, "InfoBox: " + output, JOptionPane.INFORMATION_MESSAGE);
+       
+        projectsArr = activeProjObs.toArray(new Project[activeProjObs.size()]);
+
         Arrays.sort(projectsArr);
     }
 
